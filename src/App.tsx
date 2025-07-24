@@ -15,18 +15,28 @@ function App() {
       <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold text-gray-900">Lorem Ipsum</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Gold & Diamond Trade</h1>
 
             <div className="hidden md:flex items-center space-x-8">
-              {['Lorem', 'Ipsum', 'Dolor', 'Sit Amet', 'Consectetur'].map((item) => (
-                <button key={item} className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                  {item}
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-              ))}
-              <button className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                Adipiscing
-              </button>
+              {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
+                const link = item.toLowerCase()
+                return (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      const section = document.getElementById(link)
+                      if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' })
+                        setMobileMenuOpen(false) // optional: close mobile menu
+                      }
+                    }}
+                    className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item}
+                  </button>
+                )
+              })}
+
             </div>
 
             <div className="md:hidden">
@@ -38,14 +48,25 @@ function App() {
 
           {mobileMenuOpen && (
             <div className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4">
-              {['Lorem', 'Ipsum', 'Dolor', 'Sit Amet', 'Consectetur', 'Adipiscing'].map((item) => (
-                <button
-                  key={item}
-                  className="block w-full text-left text-gray-700 px-4 py-2 hover:bg-gray-100 rounded-md text-sm font-medium"
-                >
-                  {item}
-                </button>
-              ))}
+              {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
+                const link = item.toLowerCase()
+                return (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      const section = document.getElementById(link)
+                      if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' })
+                        setMobileMenuOpen(false) // optional: close mobile menu
+                      }
+                    }}
+                    className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item}
+                  </button>
+                )
+              })}
+
             </div>
           )}
         </div>
@@ -63,13 +84,12 @@ function App() {
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center text-white max-w-4xl mx-auto pt-20 md:pt-32">
           <div className="mb-4">
             <div className="inline-block bg-green-500 h-1 w-32 mb-4"></div>
-            <p className="text-lg italic mb-8">Lorem ipsum dolor sit amet</p>
+            <p className="text-lg italic mb-8">Importer & Exporter of Gold, Silver & Certified Diamonds</p>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            LOREM<br />
-            IPSUM DOLOR<br />
-            SIT AMET
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-8 leading-tight">
+            COMPLIANT. TRUSTED.<br />
+            GLOBAL PRECIOUS TRADE
           </h1>
 
           <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg">
@@ -82,9 +102,9 @@ function App() {
       {/* Side Panels */}
       <div className="hidden lg:flex flex-col gap-4 absolute right-8 top-[65%] z-0 w-80">
         {[
-          { title: "LOREM IPSUM", subtitle: 'DOLOR SIT AMET' },
-          { title: 'SED DO EIUSMOD', subtitle: "TEMPOR INCIDIDUNT" },
-          { title: 'UT LABORE ET DOLORE', subtitle: 'MAGNA ALIQUA' },
+          { title: "LICENSED EXPORTS", subtitle: 'DGFT, BIS, Customs Compliant' },
+          { title: 'GLOBAL NETWORK', subtitle: "UAE, USA, Belgium & More" },
+          { title: 'END-TO-END HANDLING', subtitle: 'Logistics, Customs & Docs' },
         ].map((panel, i) => (
           <div key={i} className="bg-gray-800 bg-opacity-80 text-white p-6 rounded">
             <div className="text-sm text-gray-300 mb-2">{panel.subtitle}</div>
@@ -94,12 +114,12 @@ function App() {
       </div>
 
       {/* About Section */}
-      <section className="py-20 bg-gray-900 text-white px-4">
+      <section id="about" className="py-20 bg-gray-900 text-white px-4">
         <div className="max-w-6xl mx-auto">
           <div className="bg-green-500 h-1 w-32 mb-8"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <p className="text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+              Trusted by jewelers, traders, and international investors, we specialize in cross-border trade of precious metals and gemstones. Our services are licensed and fully compliant with India's DGFT, GST, BIS, and global trade laws. We manage end-to-end logistics, documentation, and customs handling for our partners worldwide.
             </p>
             <Button variant="outline" className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white">
               About Us
@@ -108,43 +128,7 @@ function App() {
         </div>
       </section>
 
-      {/* News & Insights */}
-      <section className="py-20 bg-gray-900 text-white px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
-          <h2 className="text-4xl font-bold mb-12">NEWS & INSIGHTS</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[diamondImage, miningImage, null].map((img, i) => (
-              <div key={i} className="bg-gray-800 rounded-lg overflow-hidden">
-                {img ? (
-                  <img src={img} alt="News" className="w-full h-48 object-cover" />
-                ) : (
-                  <div className="bg-blue-600 h-48 flex items-center justify-center text-center p-4">
-                    <div>
-                      <div className="text-sm mb-2">12 MAY 2025</div>
-                      <h3 className="text-lg font-bold">Lorem ipsum dolor sit amet consectetur.</h3>
-                    </div>
-                  </div>
-                )}
-                <div className="p-6">
-                  {img && (
-                    <>
-                      <div className="text-sm text-gray-400 mb-2">
-                        {i === 0 ? '18 JUN 2025' : '06 JUN 2025'}
-                      </div>
-                      <h3 className="text-xl font-bold mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </h3>
-                    </>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Journey */}
+      {/* Journey Section */}
       <section className="py-20 bg-black text-white px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -158,8 +142,10 @@ function App() {
             </div>
             <div>
               <div className="bg-orange-500 h-1 w-32 mb-8"></div>
-              <h2 className="text-4xl font-bold mb-6">LOREM JOURNEY</h2>
-              <p className="text-lg mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+              <h2 className="text-4xl font-bold mb-6">OUR TRADE JOURNEY</h2>
+              <p className="text-lg mb-8">
+                Exporting gold bars, silver grains, and certified diamonds to UAE, Hong Kong, Singapore, Belgium, and USA. We import raw metals and custom-cut diamonds from authorized refineries and global suppliers.
+              </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-purple-600 hover:bg-purple-700 text-white">Explore More</Button>
                 <Button variant="outline" className="text-purple-600 border-purple-600 hover:bg-purple-600 hover:text-white">
@@ -171,21 +157,23 @@ function App() {
         </div>
       </section>
 
-      {/* Impact */}
-      <section className="py-20 bg-gray-100 px-4">
+      {/* Impact Section */}
+      <section id="exports" className="py-20 bg-gray-100 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">OUR IMPACT</h2>
-          <p className="text-lg text-gray-700 mb-12 max-w-3xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada nisi in neque blandit consequat.</p>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">OUR EXPORTS & IMPORTS</h2>
+          <p className="text-lg text-gray-700 mb-12 max-w-3xl">
+            We handle bulk orders, certified precious materials, and high-value transactions under RBI and customs norms. Our B2B services include customizable packaging and reliable delivery for global partners.
+          </p>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { label: 'GLOBAL IMPACT', value: '33%' },
-              { label: 'YEARS EXPERIENCE', value: '136' },
-              { label: 'ECONOMIC VALUE', value: '$2,858m' },
-              { label: 'COUNTRIES REACHED', value: '18' },
+              { label: 'Gold Bars (24K, 22K)', value: 'EXPORT' },
+              { label: 'Silver Bars & Grains (999)', value: 'EXPORT' },
+              { label: 'Certified Diamonds (GIA/IGI)', value: 'EXPORT' },
+              { label: 'Raw Gold & Custom Diamonds', value: 'IMPORT' },
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <div className="text-4xl sm:text-6xl font-bold text-gray-900 mb-2">{item.value}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{item.value}</div>
                 <p className="text-sm text-gray-600 uppercase">{item.label}</p>
               </div>
             ))}
@@ -198,46 +186,77 @@ function App() {
         </div>
       </section>
 
-      {/* Building Forever */}
-      <section className="py-20 bg-gray-900 text-white px-4">
+      <section id="compliance" className="py-20 bg-white text-gray-900 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="bg-green-500 h-1 w-32 mb-8"></div>
-              <h2 className="text-4xl font-bold mb-6">BUILDING FOREVER</h2>
-              <h3 className="text-2xl font-bold mb-6">OUR STRATEGY</h3>
-              <p className="text-lg mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non felis libero. Cras fermentum orci in tellus blandit.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { title: 'TRANSPARENCY', desc: 'Ensuring clarity and trust', color: 'bg-red-900' },
-                { title: 'OPPORTUNITY', desc: 'Creating better futures', color: 'bg-gray-700' },
-                { title: 'NATURE', desc: 'Protecting the planet', color: 'bg-green-800' },
-                { title: 'CLIMATE', desc: 'Driving innovation', color: 'bg-blue-800' },
-              ].map((item, i) => (
-                <div key={i} className={`${item.color} p-6 text-center rounded`}>
-                  <h4 className="font-bold mb-2">{item.title}</h4>
-                  <p className="text-sm">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div className="bg-green-500 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-6">Why Choose Us</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Certified Trade Partner", desc: "DGFT, BIS, and global compliance ensured." },
+              { title: "Trusted Global Network", desc: "Backed by relationships across UAE, Belgium & USA." },
+              { title: "End-to-End Logistics", desc: "From documentation to secure delivery, we handle it all." },
+              { title: "LBMA-approved Sources", desc: "Sourced gold and silver from reputed refiners." },
+              { title: "Dedicated B2B Support", desc: "Account managers for your trade needs." },
+              { title: "Transparent Pricing", desc: "Live-linked global pricing benchmarks." },
+            ].map((item, i) => (
+              <div key={i} className="p-6 border rounded-lg shadow hover:shadow-lg transition">
+                <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Subscribe */}
-      <section className="py-16 bg-gray-900 text-white px-4">
-        <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="mb-6 text-gray-300">Subscribe to receive news and updates</p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <input type="email" placeholder="Your Email" className="flex-1 px-4 py-3 rounded text-black" />
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3">Subscribe</Button>
+      <section id="contact" className="py-20 bg-gray-900 text-white px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-green-500 h-1 w-32 mb-8 mx-auto"></div>
+          <h2 className="text-4xl font-bold mb-4">Request a Trade Quote</h2>
+          <p className="mb-6 text-gray-300">Share your requirements and we’ll get back to you within 24 hours.</p>
+          <form className="grid gap-4 text-left">
+            <input type="text" placeholder="Company Name" className="w-full px-4 py-3 rounded text-black" />
+            <input type="text" placeholder="Product Required (e.g. Gold 24K)" className="w-full px-4 py-3 rounded text-black" />
+            <input type="number" placeholder="Quantity (in grams/carat)" className="w-full px-4 py-3 rounded text-black" />
+            <input type="email" placeholder="Your Email" className="w-full px-4 py-3 rounded text-black" />
+            <textarea placeholder="Additional Details" className="w-full px-4 py-3 rounded text-black"></textarea>
+            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3">Submit Inquiry</Button>
+          </form>
+        </div>
+      </section>
+
+
+      <section className="py-20 bg-white text-gray-900 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-8">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {[
+              {
+                q: "Do you provide documentation and customs clearance?",
+                a: "Yes, we handle end-to-end documentation, RBI clearance, and customs compliance for all shipments."
+              },
+              {
+                q: "Are your diamonds certified?",
+                a: "All our diamonds are GIA or IGI certified, and come with digital and hard copy certification."
+              },
+              {
+                q: "Can I request packaging with my company logo?",
+                a: "Yes, we offer private labeling and custom packaging for B2B bulk clients."
+              },
+              {
+                q: "What are your payment terms?",
+                a: "We offer flexible trade terms, including advance payment, LC, and escrow depending on order type."
+              },
+            ].map((faq, i) => (
+              <div key={i} className="border-b pb-4">
+                <h4 className="text-xl font-semibold">{faq.q}</h4>
+                <p className="text-gray-700 mt-2">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="bg-black text-white py-12">
@@ -252,19 +271,19 @@ function App() {
 
           <div className="mt-8 space-y-4">
             <p className="text-sm text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Licensed importer and exporter of gold, silver, and certified diamonds. Your trusted global trade partner.
             </p>
 
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition">Privacy</a>
               <a href="#" className="hover:text-white transition">Terms</a>
-              <a href="#" className="hover:text-white transition">Impact</a>
-              <a href="#" className="hover:text-white transition">Jobs</a>
-              <a href="#" className="hover:text-white transition">Help</a>
+              <a href="#" className="hover:text-white transition">Trade Laws</a>
+              <a href="#" className="hover:text-white transition">Compliance</a>
+              <a href="#" className="hover:text-white transition">Support</a>
             </div>
           </div>
 
-          <p className="mt-6 text-sm text-gray-500">&copy; {new Date().getFullYear()} Lorem Ipsum Corp. All rights reserved.</p>
+          <p className="mt-6 text-sm text-gray-500">&copy; {new Date().getFullYear()} Global Precious Trade Corp. All rights reserved.</p>
         </div>
       </footer>
     </div>
