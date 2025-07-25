@@ -14,9 +14,15 @@ function App() {
     <div className="min-h-screen bg-white">
       <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold text-gray-900">Gold & Diamond Trade</h1>
+          <div className="flex justify-between items-center h-28">
+            
+            {/* Logo and Title */}
+            <div className="flex items-center space-x-3">
+              <img src="/assets/logo.jpeg" alt="Logo" className="h-28 w-auto object-contain" />
+              <h1 className="text-2xl font-bold text-gray-900">Gold & Diamond Trade</h1>
+            </div>
 
+            {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
                 const link = item.toLowerCase()
@@ -27,7 +33,7 @@ function App() {
                       const section = document.getElementById(link)
                       if (section) {
                         section.scrollIntoView({ behavior: 'smooth' })
-                        setMobileMenuOpen(false) // optional: close mobile menu
+                        setMobileMenuOpen(false)
                       }
                     }}
                     className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
@@ -36,9 +42,9 @@ function App() {
                   </button>
                 )
               })}
-
             </div>
 
+            {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700 focus:outline-none">
                 {mobileMenuOpen ? <X /> : <Menu />}
@@ -46,6 +52,7 @@ function App() {
             </div>
           </div>
 
+          {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4">
               {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
@@ -57,7 +64,7 @@ function App() {
                       const section = document.getElementById(link)
                       if (section) {
                         section.scrollIntoView({ behavior: 'smooth' })
-                        setMobileMenuOpen(false) // optional: close mobile menu
+                        setMobileMenuOpen(false)
                       }
                     }}
                     className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
@@ -66,11 +73,11 @@ function App() {
                   </button>
                 )
               })}
-
             </div>
           )}
         </div>
       </nav>
+
 
       {/* Hero Section */}
       <section className="relative min-h-[100vh] bg-gray-900 overflow-hidden">
