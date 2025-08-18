@@ -201,34 +201,161 @@ function App() {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section id="exports" className="py-20 bg-gray-100 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">OUR EXPORTS & IMPORTS</h2>
-          <p className="text-lg text-gray-700 mb-12 max-w-3xl">
-            We handle bulk orders, certified precious materials, and high-value transactions under RBI and customs norms. Our B2B services include customizable packaging and reliable delivery for global partners.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: 'Gold Bars (24K, 22K)', value: 'IMPORT' },
-              { label: 'Silver Bars & Grains (999)', value: 'IMPORT' },
-              { label: 'Certified Diamonds (GIA/IGI)', value: 'IMPORT' },
-              { label: 'Raw Gold & Custom Diamonds', value: 'IMPORT' },
-            ].map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{item.value}</div>
-                <p className="text-sm text-gray-600 uppercase">{item.label}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-16">
-            <Button className="bg-green-500 hover:bg-green-600 text-white">
-              Learn More
-            </Button>
-          </div>
+{/* GOLD */}
+{/* GOLD */}
+<section
+  id="gold"
+  className="relative py-20 text-white px-4 bg-gradient-to-b from-amber-900 via-amber-800 to-amber-700"
+>
+  <div className="relative max-w-7xl mx-auto">
+    <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
+    <h2 className="text-4xl font-bold mb-6">Gold — 24K & 22K (LBMA-approved)</h2>
+    <p className="text-lg mb-12 max-w-3xl">
+      Direct sourcing from reputed mines and refineries with strict verification, purity control,
+      and full compliance across documentation and logistics.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        "Gold Bars (24K & 22K), LBMA-approved",
+        "Raw Gold — purity & provenance records",
+        "Competitive pricing with secure logistics",
+        "Compliance with global trade & purity standards"
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+        >
+          <p className="text-lg">{item}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* SILVER */}
+<section
+  id="silver"
+  className="relative py-20 text-white px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-700"
+>
+  <div className="relative max-w-7xl mx-auto">
+    <div className="bg-gray-300 h-1 w-32 mb-8"></div>
+    <h2 className="text-4xl font-bold mb-6">Silver — Bars & Grains (999)</h2>
+    <p className="text-lg mb-12 max-w-3xl">
+      High-grade silver for investment and industrial needs with consistent supply and on-time delivery.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        "999 purity bars and grains",
+        "Reliable sourcing & steady supply chain",
+        "Adherence to environmental & ethical practices",
+        "Industrial & investment-grade requirements"
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+        >
+          <p className="text-lg">{item}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* DIAMONDS */}
+<section
+  id="diamonds"
+  className="relative py-20 text-white px-4 bg-gradient-to-b from-indigo-950 via-indigo-900 to-indigo-800"
+>
+  <div className="relative max-w-7xl mx-auto">
+    <div className="bg-indigo-500 h-1 w-32 mb-8"></div>
+    <h2 className="text-4xl font-bold mb-6">Diamonds — Certified & Lab-Grown</h2>
+    <p className="text-lg mb-12 max-w-3xl">
+      GIA/IGI-certified natural diamonds and high-quality lab-grown stones with conflict-free sourcing
+      and customized B2B orders.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        "GIA/IGI certification",
+        "Conflict-free sourcing policies",
+        "Natural & lab-grown options",
+        "Custom sizes, cuts & assortments for retail/wholesale"
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+        >
+          <p className="text-lg">{item}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* COPPER */}
+<section
+  id="copper"
+  className="relative py-20 text-white px-4 bg-gradient-to-b from-orange-900 via-orange-800 to-amber-700"
+>
+  <div className="relative max-w-7xl mx-auto">
+    <div className="bg-orange-500 h-1 w-32 mb-8"></div>
+    <h2 className="text-4xl font-bold mb-6">Copper — Cathodes & Wire (99.99% Pure)</h2>
+    <p className="text-lg mb-12 max-w-3xl">
+      Export-grade copper cathodes and wire sourced from certified refineries; reliable global export with timely delivery.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        "99.99% pure copper (cathodes & wire)",
+        "Sourced from certified refineries",
+        "Global exports with documentation support",
+        "Suitable for electrical, industrial & manufacturing use"
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+        >
+          <p className="text-lg">{item}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* COAL */}
+<section
+  id="coal"
+  className="relative py-20 text-white px-4 bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-800"
+>
+  <div className="relative max-w-7xl mx-auto">
+    <div className="bg-gray-800 h-1 w-32 mb-8"></div>
+    <h2 className="text-4xl font-bold mb-6">Coal — Efficient Fuel Solutions</h2>
+    <p className="text-lg mb-12 max-w-3xl">
+      Sourced from reliable global suppliers with energy-grade consistency and quality assurance for industrial, power,
+      and manufacturing sectors.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        "Thermal coal supply",
+        "Quality checks & grade consistency",
+        "Support for power & industrial use",
+        "End-to-end logistics & compliance"
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+        >
+          <p className="text-lg">{item}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
       <section id="compliance" className="py-20 bg-white text-gray-900 px-4">
         <div className="max-w-7xl mx-auto">
