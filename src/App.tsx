@@ -5,7 +5,7 @@ import './App.css'
 
 import heroImage from '/assets/c7HoyGMCv5Xi.jpg'
 import diamondImage from '/assets/2FPW5tLo73Lx.jpg'
-import miningImage from '/assets/w8I27yXbP6r8.jpg'
+import miningImage from '/assets/aboutus.jpg'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -154,27 +154,23 @@ function App() {
           <li>Gold Bars (24K, 22K) & Raw Gold with LBMA-approved standards</li>
           <li>High-grade Silver Bars & Grains (999 purity) for investment & industry</li>
           <li>GIA/IGI-certified natural & lab-grown diamonds, conflict-free sourcing</li>
-          <li>Coal imports for industrial and power sectors with quality assurance</li>
+          <li>Coal imports & exports for industrial, power, and energy sectors</li>
           <li>Copper Cathodes & Wire (99.99% pure) from certified refineries</li>
+          <li>Scrap Metal Exporting – reliable sourcing and global distribution</li>
         </ul>
 
         <p className="text-lg leading-relaxed mb-6">
           With a global reach spanning UAE, Hong Kong, Singapore, Belgium,
           USA, and Myanmar, we ensure transparent pricing, ethical sourcing,
           and strong supplier partnerships to serve key industries including
-          jewelry manufacturers, bullion traders, wholesalers, and exporters.
+          jewelry manufacturers, bullion traders, wholesalers, exporters,
+          and industrial clients.
         </p>
-
-        <Button
-          variant="outline"
-          className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white"
-        >
-          Learn More
-        </Button>
       </div>
     </div>
   </div>
 </section>
+
 
       {/* Journey Section */}
       <section className="py-20 bg-black text-white px-4">
