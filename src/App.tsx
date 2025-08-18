@@ -19,7 +19,11 @@ function App() {
       {/* Logo + Title */}
       <div className="flex items-center space-x-3">
         <img src="/assets/logo.jpeg" alt="Logo" className="h-16 w-auto object-contain rounded-lg" />
-        <h1 className="text-xl font-bold text-gray-900">Hcein Overseas</h1>
+<h1 className="text-2xl md:text-3xl font-myfont font-bold tracking-tight text-gray-900">
+  Hcein Overseas
+</h1>
+
+
       </div>
 
       {/* Desktop Menu */}
@@ -364,6 +368,7 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "Certified Trade Partner", desc: "DGFT, BIS, and global compliance ensured." },
+              { title: "Major Trade Partners", desc: "Africa, Myanmar and UAE are our Major Trade Patners." },
               { title: "Trusted Global Network", desc: "Backed by relationships across UAE, Belgium & USA." },
               { title: "End-to-End Logistics", desc: "From documentation to secure delivery, we handle it all." },
               { title: "LBMA-approved Sources", desc: "Sourced gold and silver from reputed refiners." },
@@ -409,10 +414,6 @@ function App() {
               {
                 q: "Are your diamonds certified?",
                 a: "All our diamonds are GIA or IGI certified, and come with digital and hard copy certification."
-              },
-              {
-                q: "Can I request packaging with my company logo?",
-                a: "Yes, we offer private labeling and custom packaging for B2B bulk clients."
               },
               {
                 q: "What are your payment terms?",
