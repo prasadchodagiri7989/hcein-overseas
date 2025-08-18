@@ -19,7 +19,7 @@ function App() {
       {/* Logo + Title */}
       <div className="flex items-center space-x-3">
         <img src="/assets/logo.jpeg" alt="Logo" className="h-16 w-auto object-contain rounded-lg" />
-        <h1 className="text-xl font-bold text-gray-900">Gold & Diamond Trade</h1>
+        <h1 className="text-xl font-bold text-gray-900">Hcein Overseas</h1>
       </div>
 
       {/* Desktop Menu */}
