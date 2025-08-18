@@ -12,75 +12,78 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <nav className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-28">
-            
-            {/* Logo and Title */}
-            <div className="flex items-center space-x-3">
-              <img src="/assets/logo.jpeg" alt="Logo" className="h-28 w-auto object-contain" />
-              <h1 className="text-2xl font-bold text-gray-900">Gold & Diamond Trade</h1>
-            </div>
+{/* NAVBAR */}
+<nav className="fixed top-4 inset-x-4 sm:inset-x-6 lg:inset-x-8 z-50 rounded-2xl bg-white shadow-md border border-gray-200 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-20">
+      {/* Logo + Title */}
+      <div className="flex items-center space-x-3">
+        <img src="/assets/logo.jpeg" alt="Logo" className="h-16 w-auto object-contain rounded-lg" />
+        <h1 className="text-xl font-bold text-gray-900">Gold & Diamond Trade</h1>
+      </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
-                const link = item.toLowerCase()
-                return (
-                  <button
-                    key={item}
-                    onClick={() => {
-                      const section = document.getElementById(link)
-                      if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' })
-                        setMobileMenuOpen(false)
-                      }
-                    }}
-                    className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {item}
-                  </button>
-                )
-              })}
-            </div>
+      {/* Desktop Menu */}
+      <div className="hidden md:flex items-center space-x-8">
+        {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
+          const link = item.toLowerCase()
+          return (
+            <button
+              key={item}
+              onClick={() => {
+                const section = document.getElementById(link)
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth' })
+                  setMobileMenuOpen(false)
+                }
+              }}
+              className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              {item}
+            </button>
+          )
+        })}
+      </div>
 
-            {/* Mobile Menu Toggle */}
-            <div className="md:hidden">
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700 focus:outline-none">
-                {mobileMenuOpen ? <X /> : <Menu />}
-              </button>
-            </div>
-          </div>
+      {/* Mobile Toggle */}
+      <div className="md:hidden">
+        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700 focus:outline-none">
+          {mobileMenuOpen ? <X /> : <Menu />}
+        </button>
+      </div>
+    </div>
 
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4">
-              {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
-                const link = item.toLowerCase()
-                return (
-                  <button
-                    key={item}
-                    onClick={() => {
-                      const section = document.getElementById(link)
-                      if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' })
-                        setMobileMenuOpen(false)
-                      }
-                    }}
-                    className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {item}
-                  </button>
-                )
-              })}
-            </div>
-          )}
-        </div>
-      </nav>
+    {/* Mobile Menu (inside same rounded card) */}
+    {mobileMenuOpen && (
+      <div className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4 rounded-b-2xl bg-white">
+        {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
+          const link = item.toLowerCase()
+          return (
+            <button
+              key={item}
+              onClick={() => {
+                const section = document.getElementById(link)
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth' })
+                  setMobileMenuOpen(false)
+                }
+              }}
+              className="flex w-full justify-start text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              {item}
+            </button>
+          )
+        })}
+      </div>
+    )}
+  </div>
+</nav>
+
+{/* SPACER — pushes content below fixed nav; grows when mobile menu is open */}
+<div className={`h-0 md:h-20 ${mobileMenuOpen ? 'h-[280px] md:h-20' : ''}`} />
 
 
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] bg-gray-900 overflow-hidden">
+<section className="relative min-h-[100vh] bg-gray-900 overflow-hidden -mt-0 sm:-mt-24 lg:-mt-24">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -121,19 +124,57 @@ function App() {
       </div>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-900 text-white px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-green-500 h-1 w-32 mb-8"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <p className="text-lg leading-relaxed">
-              Trusted by jewelers, traders, and international investors, we specialize in cross-border trade of precious metals and gemstones. Our services are licensed and fully compliant with India's DGFT, GST, BIS, and global trade laws. We manage end-to-end logistics, documentation, and customs handling for our partners worldwide.
-            </p>
-            <Button variant="outline" className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white">
-              About Us
-            </Button>
-          </div>
-        </div>
-      </section>
+<section id="about" className="py-20 bg-gray-900 text-white px-4">
+  <div className="max-w-6xl mx-auto">
+    <div className="bg-green-500 h-1 w-32 mb-8"></div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+      {/* Left Column - Image */}
+      <div>
+        <img
+          src={miningImage} 
+          alt="Global Commodities"
+          className="rounded-lg shadow-lg"
+        />
+      </div>
+
+      {/* Right Column - Content */}
+      <div>
+        <h2 className="text-3xl font-bold mb-6">About Hcein Overseas Pvt Ltd</h2>
+        <p className="text-lg leading-relaxed mb-6">
+          Trusted by jewelers, traders, and international investors, we specialize
+          in cross-border trade of precious metals, certified diamonds, and
+          industrial commodities. Our services are fully licensed and compliant
+          with India's DGFT, GST, BIS, and international trade regulations.  
+          We manage end-to-end logistics, documentation, customs clearance,
+          and secure delivery for partners worldwide.
+        </p>
+
+        <ul className="list-disc list-inside space-y-2 text-gray-300 mb-6">
+          <li>Gold Bars (24K, 22K) & Raw Gold with LBMA-approved standards</li>
+          <li>High-grade Silver Bars & Grains (999 purity) for investment & industry</li>
+          <li>GIA/IGI-certified natural & lab-grown diamonds, conflict-free sourcing</li>
+          <li>Coal imports for industrial and power sectors with quality assurance</li>
+          <li>Copper Cathodes & Wire (99.99% pure) from certified refineries</li>
+        </ul>
+
+        <p className="text-lg leading-relaxed mb-6">
+          With a global reach spanning UAE, Hong Kong, Singapore, Belgium,
+          USA, and Myanmar, we ensure transparent pricing, ethical sourcing,
+          and strong supplier partnerships to serve key industries including
+          jewelry manufacturers, bullion traders, wholesalers, and exporters.
+        </p>
+
+        <Button
+          variant="outline"
+          className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white"
+        >
+          Learn More
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Journey Section */}
       <section className="py-20 bg-black text-white px-4">
@@ -174,9 +215,9 @@ function App() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { label: 'Gold Bars (24K, 22K)', value: 'EXPORT' },
-              { label: 'Silver Bars & Grains (999)', value: 'EXPORT' },
-              { label: 'Certified Diamonds (GIA/IGI)', value: 'EXPORT' },
+              { label: 'Gold Bars (24K, 22K)', value: 'IMPORT' },
+              { label: 'Silver Bars & Grains (999)', value: 'IMPORT' },
+              { label: 'Certified Diamonds (GIA/IGI)', value: 'IMPORT' },
               { label: 'Raw Gold & Custom Diamonds', value: 'IMPORT' },
             ].map((item, i) => (
               <div key={i} className="text-center">
