@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { ChevronDown, Play, ArrowRight, Menu, X } from 'lucide-react'
 import './App.css'
 
-import heroImage from '/assets/c7HoyGMCv5Xi.jpg'
+import heroImage from '/assets/Mining-in-Ghana-The-Key-Investment-Benefits-You-Need-to-Know.jpg'
 import diamondImage from '/assets/2FPW5tLo73Lx.jpg'
 import miningImage from '/assets/1280px-Gold_panning_at_Bonanza_Creek.jpg'
 
