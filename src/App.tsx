@@ -5,7 +5,7 @@ import './App.css'
 
 import heroImage from '/assets/c7HoyGMCv5Xi.jpg'
 import diamondImage from '/assets/2FPW5tLo73Lx.jpg'
-import miningImage from '/assets/aboutus.jpg'
+import miningImage from '/assets/1280px-Gold_panning_at_Bonanza_Creek.jpg'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -110,7 +110,7 @@ function App() {
       </section>
 
       {/* Side Panels */}
-      <div className="hidden lg:flex flex-col gap-4 absolute right-8 top-[65%] z-10 w-80">
+      <div className="hidden lg:flex flex-col gap-4 absolute right-8 top-[65%] z-0 w-80">
         {[
           { title: "LICENSED EXPORTS", subtitle: 'DGFT, BIS, Customs Compliant' },
           { title: 'GLOBAL NETWORK', subtitle: "UAE, USA, Belgium & More" },
@@ -124,20 +124,22 @@ function App() {
       </div>
 
       {/* About Section */}
-<section
-  id="about"
-  className="relative py-20 bg-gray-900 text-white px-4"
-  style={{ backgroundImage: `url('/assets/GoldPanOnBank.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
->
-  {/* Dark overlay for readability */}
-  <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-
-  <div className="relative max-w-6xl mx-auto">
+<section id="about" className="py-20 bg-gray-900 text-white px-4">
+  <div className="max-w-6xl mx-auto">
     <div className="bg-green-500 h-1 w-32 mb-8"></div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       
-      {/* Right Column - Content (full width since image removed) */}
-      <div className="md:col-span-2">
+      {/* Left Column - Image */}
+      <div>
+        <img
+          src={miningImage} 
+          alt="Global Commodities"
+          className="rounded-lg shadow-lg md:h-[500px] h-[300px] w-full object-cover"
+        />
+      </div>
+
+      {/* Right Column - Content */}
+      <div>
         <h2 className="text-3xl font-bold mb-6">About Hcein Overseas Pvt Ltd</h2>
         <p className="text-lg leading-relaxed mb-6">
           Trusted by jewelers, traders, and international investors, we specialize
@@ -168,7 +170,6 @@ function App() {
     </div>
   </div>
 </section>
-
 
 
       {/* Journey Section */}
