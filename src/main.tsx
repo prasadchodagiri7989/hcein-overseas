@@ -1,5 +1,7 @@
 import { createRoot } from 'react-dom/client'
-import { HelmetProvider } from 'react-helmet-async'
+// ✅ Fix
+import helmetPkg from "react-helmet-async";
+const { HelmetProvider } = helmetPkg;
 import App from './App.tsx'
 import './index.css'
 
