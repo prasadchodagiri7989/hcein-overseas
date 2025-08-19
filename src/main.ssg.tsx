@@ -10,5 +10,5 @@ export const createApp = ViteSSG(
       <App />
     </BrowserRouter>
   ),
-  { routes: ["/", "/about", "/exports", "/imports", "/compliance", "/contact"] }
+  { routes: ["/"] }
 );
