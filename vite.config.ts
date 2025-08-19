@@ -17,4 +17,10 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  ssr: {
+    external: ["lucide-react"], // ✅ prevent lucide from being SSR'ed
+  },
+  optimizeDeps: {
+    include: ["lucide-react"], // ✅ ensure it's bundled for dev
+  },
 }));
