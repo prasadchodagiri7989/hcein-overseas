@@ -9,85 +9,115 @@ import miningImage from '/assets/1280px-Gold_panning_at_Bonanza_Creek.jpg'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    company: "",
+    product: "",
+    quantity: "",
+    email: "",
+    details: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleWhatsAppSubmit = (e) => {
+    e.preventDefault();
+
+const message = `
+*📌 New Trade Inquiry*
+━━━━━━━━━━━━━━━
+🏢 Company: ${formData.company}
+💎 Product: ${formData.product}
+⚖️ Quantity: ${formData.quantity}
+📧 Email: ${formData.email}
+📝 Details: ${formData.details || "N/A"}
+━━━━━━━━━━━━━━━
+Sent via Hcein Overseas Website
+`;
+
+const phone = "919704602458";
+const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+window.open(url, "_blank");
+
+  };
+
 
   return (
     <div className="min-h-screen bg-white">
-{/* NAVBAR */}
-<nav className="fixed top-4 inset-x-4 sm:inset-x-6 lg:inset-x-8 z-50 rounded-2xl bg-white shadow-md border border-gray-200 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex justify-between items-center h-20">
-      {/* Logo + Title */}
-      <div className="flex items-center space-x-3">
-        <img src="/assets/logo.jpeg" alt="Logo" className="h-16 w-auto object-contain rounded-lg" />
-<h1 className="text-2xl md:text-3xl font-myfont font-bold tracking-tight text-gray-900">
-  Hcein Overseas
-</h1>
+      {/* NAVBAR */}
+      <nav className="fixed top-4 inset-x-4 sm:inset-x-6 lg:inset-x-8 z-50 rounded-2xl bg-white shadow-md border border-gray-200 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo + Title */}
+            <div className="flex items-center space-x-3">
+              <img src="/assets/logo.jpeg" alt="Logo" className="h-16 w-auto object-contain rounded-lg" />
+              <h1 className="text-2xl md:text-3xl font-myfont font-bold tracking-tight text-gray-900">
+                HCEIN OVERSEAS
+              </h1>
+            </div>
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
+                const link = item.toLowerCase()
+                return (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      const section = document.getElementById(link)
+                      if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' })
+                        setMobileMenuOpen(false)
+                      }
+                    }}
+                    className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item}
+                  </button>
+                )
+              })}
+            </div>
 
+            {/* Mobile Toggle */}
+            <div className="md:hidden">
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700 focus:outline-none">
+                {mobileMenuOpen ? <X /> : <Menu />}
+              </button>
+            </div>
+          </div>
 
-      </div>
+          {/* Mobile Menu (inside same rounded card) */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4 rounded-b-2xl bg-white">
+              {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
+                const link = item.toLowerCase()
+                return (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      const section = document.getElementById(link)
+                      if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' })
+                        setMobileMenuOpen(false)
+                      }
+                    }}
+                    className="flex w-full justify-start text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item}
+                  </button>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      </nav>
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex items-center space-x-8">
-        {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
-          const link = item.toLowerCase()
-          return (
-            <button
-              key={item}
-              onClick={() => {
-                const section = document.getElementById(link)
-                if (section) {
-                  section.scrollIntoView({ behavior: 'smooth' })
-                  setMobileMenuOpen(false)
-                }
-              }}
-              className="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              {item}
-            </button>
-          )
-        })}
-      </div>
-
-      {/* Mobile Toggle */}
-      <div className="md:hidden">
-        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700 focus:outline-none">
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-    </div>
-
-    {/* Mobile Menu (inside same rounded card) */}
-    {mobileMenuOpen && (
-      <div className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4 rounded-b-2xl bg-white">
-        {['About', 'Exports', 'Imports', 'Compliance', 'Contact'].map((item) => {
-          const link = item.toLowerCase()
-          return (
-            <button
-              key={item}
-              onClick={() => {
-                const section = document.getElementById(link)
-                if (section) {
-                  section.scrollIntoView({ behavior: 'smooth' })
-                  setMobileMenuOpen(false)
-                }
-              }}
-              className="flex w-full justify-start text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              {item}
-            </button>
-          )
-        })}
-      </div>
-    )}
-  </div>
-</nav>
-
-{/* SPACER — pushes content below fixed nav; grows when mobile menu is open */}
-<div className={`h-0 md:h-20 ${mobileMenuOpen ? 'h-[280px] md:h-20' : ''}`} />
+      {/* SPACER — pushes content below fixed nav; grows when mobile menu is open */}
+      <div className={`h-0 md:h-20 ${mobileMenuOpen ? 'h-[280px] md:h-20' : ''}`} />
 
 
       {/* Hero Section */}
-<section className="relative min-h-[100vh] bg-gray-900 overflow-hidden -mt-0 sm:-mt-24 lg:-mt-24">
+      <section className="relative min-h-[100vh] bg-gray-900 overflow-hidden -mt-0 sm:-mt-24 lg:-mt-24">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -106,10 +136,19 @@ function App() {
             GLOBAL PRECIOUS TRADE
           </h1>
 
-          <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg">
-            Learn More
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+<Button
+  onClick={() => {
+    const section = document.getElementById("about");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg"
+>
+  Learn More
+  <ArrowRight className="ml-2 h-5 w-5" />
+</Button>
+
         </div>
       </section>
 
@@ -128,52 +167,52 @@ function App() {
       </div>
 
       {/* About Section */}
-<section id="about" className="py-20 bg-gray-900 text-white px-4">
-  <div className="max-w-6xl mx-auto">
-    <div className="bg-green-500 h-1 w-32 mb-8"></div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      
-      {/* Left Column - Image */}
-      <div>
-        <img
-          src={miningImage} 
-          alt="Global Commodities"
-          className="rounded-lg shadow-lg md:h-[500px] h-[300px] w-full object-cover"
-        />
-      </div>
+      <section id="about" className="py-20 bg-gray-900 text-white px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-green-500 h-1 w-32 mb-8"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-      {/* Right Column - Content */}
-      <div>
-        <h2 className="text-3xl font-bold mb-6">About Hcein Overseas Pvt Ltd</h2>
-        <p className="text-lg leading-relaxed mb-6">
-          Trusted by jewelers, traders, and international investors, we specialize
-          in cross-border trade of precious metals, certified diamonds, and
-          industrial commodities. Our services are fully licensed and compliant
-          with India's DGFT, GST, BIS, and international trade regulations.  
-          We manage end-to-end logistics, documentation, customs clearance,
-          and secure delivery for partners worldwide.
-        </p>
+            {/* Left Column - Image */}
+            <div>
+              <img
+                src={miningImage}
+                alt="Global Commodities"
+                className="rounded-lg shadow-lg md:h-[500px] h-[300px] w-full object-cover"
+              />
+            </div>
 
-        <ul className="list-disc list-inside space-y-2 text-gray-300 mb-6">
-          <li>Gold Bars (24K, 22K) & Raw Gold with LBMA-approved standards</li>
-          <li>High-grade Silver Bars & Grains (999 purity) for investment & industry</li>
-          <li>GIA/IGI-certified natural & lab-grown diamonds, conflict-free sourcing</li>
-          <li>Coal imports & exports for industrial, power, and energy sectors</li>
-          <li>Copper Cathodes & Wire (99.99% pure) from certified refineries</li>
-          <li>Scrap Metal Exporting – reliable sourcing and global distribution</li>
-        </ul>
+            {/* Right Column - Content */}
+            <div>
+              <h2 className="text-3xl font-bold mb-6">About Hcein Overseas Pvt Ltd</h2>
+              <p className="text-lg leading-relaxed mb-6">
+                Trusted by jewelers, traders, and international investors, we specialize
+                in cross-border trade of precious metals, certified diamonds, and
+                industrial commodities. Our services are fully licensed and compliant
+                with India's DGFT, GST, BIS, and international trade regulations.
+                We manage end-to-end logistics, documentation, customs clearance,
+                and secure delivery for partners worldwide.
+              </p>
 
-        <p className="text-lg leading-relaxed mb-6">
-          With a global reach spanning UAE, Hong Kong, Singapore, Belgium,
-          USA, and Myanmar, we ensure transparent pricing, ethical sourcing,
-          and strong supplier partnerships to serve key industries including
-          jewelry manufacturers, bullion traders, wholesalers, exporters,
-          and industrial clients.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+              <ul className="list-disc list-inside space-y-2 text-gray-300 mb-6">
+                <li>Gold Bars (24K, 22K) & Raw Gold with LBMA-approved standards</li>
+                <li>High-grade Silver Bars & Grains (999 purity) for investment & industry</li>
+                <li>GIA/IGI-certified natural & lab-grown diamonds, conflict-free sourcing</li>
+                <li>Coal imports & exports for industrial, power, and energy sectors</li>
+                <li>Copper Cathodes & Wire (99.99% pure) from certified refineries</li>
+                <li>Scrap Metal Exporting – reliable sourcing and global distribution</li>
+              </ul>
+
+              <p className="text-lg leading-relaxed mb-6">
+                With a global reach spanning UAE, Hong Kong, Singapore, Belgium,
+                USA, and Myanmar, we ensure transparent pricing, ethical sourcing,
+                and strong supplier partnerships to serve key industries including
+                jewelry manufacturers, bullion traders, wholesalers, exporters,
+                and industrial clients.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       {/* Journey Section */}
@@ -205,159 +244,159 @@ function App() {
         </div>
       </section>
 
-{/* GOLD */}
-{/* GOLD */}
-<section
-  id="gold"
-  className="relative py-20 text-white px-4 bg-gradient-to-b from-amber-900 via-amber-800 to-amber-700"
->
-  <div className="relative max-w-7xl mx-auto">
-    <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
-    <h2 className="text-4xl font-bold mb-6">Gold — 24K & 22K (LBMA-approved)</h2>
-    <p className="text-lg mb-12 max-w-3xl">
-      Direct sourcing from reputed mines and refineries with strict verification, purity control,
-      and full compliance across documentation and logistics.
-    </p>
+      {/* GOLD */}
+      {/* GOLD */}
+      <section
+        id="gold"
+        className="relative py-20 text-white px-4 bg-gradient-to-b from-amber-900 via-amber-800 to-amber-700"
+      >
+        <div className="relative max-w-7xl mx-auto">
+          <div className="bg-yellow-500 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-6">Gold — 24K & 22K (LBMA-approved)</h2>
+          <p className="text-lg mb-12 max-w-3xl">
+            Direct sourcing from reputed mines and refineries with strict verification, purity control,
+            and full compliance across documentation and logistics.
+          </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        "Gold Bars (24K & 22K), LBMA-approved",
-        "Raw Gold — purity & provenance records",
-        "Competitive pricing with secure logistics",
-        "Compliance with global trade & purity standards"
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
-        >
-          <p className="text-lg">{item}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "Gold Bars (24K & 22K), LBMA-approved",
+              "Raw Gold — purity & provenance records",
+              "Competitive pricing with secure logistics",
+              "Compliance with global trade & purity standards"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+              >
+                <p className="text-lg">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-{/* SILVER */}
-<section
-  id="silver"
-  className="relative py-20 text-white px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-700"
->
-  <div className="relative max-w-7xl mx-auto">
-    <div className="bg-gray-300 h-1 w-32 mb-8"></div>
-    <h2 className="text-4xl font-bold mb-6">Silver — Bars & Grains (999)</h2>
-    <p className="text-lg mb-12 max-w-3xl">
-      High-grade silver for investment and industrial needs with consistent supply and on-time delivery.
-    </p>
+      {/* SILVER */}
+      <section
+        id="silver"
+        className="relative py-20 text-white px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-700"
+      >
+        <div className="relative max-w-7xl mx-auto">
+          <div className="bg-gray-300 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-6">Silver — Bars & Grains (999)</h2>
+          <p className="text-lg mb-12 max-w-3xl">
+            High-grade silver for investment and industrial needs with consistent supply and on-time delivery.
+          </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        "999 purity bars and grains",
-        "Reliable sourcing & steady supply chain",
-        "Adherence to environmental & ethical practices",
-        "Industrial & investment-grade requirements"
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
-        >
-          <p className="text-lg">{item}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "999 purity bars and grains",
+              "Reliable sourcing & steady supply chain",
+              "Adherence to environmental & ethical practices",
+              "Industrial & investment-grade requirements"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+              >
+                <p className="text-lg">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-{/* DIAMONDS */}
-<section
-  id="diamonds"
-  className="relative py-20 text-white px-4 bg-gradient-to-b from-indigo-950 via-indigo-900 to-indigo-800"
->
-  <div className="relative max-w-7xl mx-auto">
-    <div className="bg-indigo-500 h-1 w-32 mb-8"></div>
-    <h2 className="text-4xl font-bold mb-6">Diamonds — Certified & Lab-Grown</h2>
-    <p className="text-lg mb-12 max-w-3xl">
-      GIA/IGI-certified natural diamonds and high-quality lab-grown stones with conflict-free sourcing
-      and customized B2B orders.
-    </p>
+      {/* DIAMONDS */}
+      <section
+        id="diamonds"
+        className="relative py-20 text-white px-4 bg-gradient-to-b from-indigo-950 via-indigo-900 to-indigo-800"
+      >
+        <div className="relative max-w-7xl mx-auto">
+          <div className="bg-indigo-500 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-6">Diamonds — Certified & Lab-Grown</h2>
+          <p className="text-lg mb-12 max-w-3xl">
+            GIA/IGI-certified natural diamonds and high-quality lab-grown stones with conflict-free sourcing
+            and customized B2B orders.
+          </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        "GIA/IGI certification",
-        "Conflict-free sourcing policies",
-        "Natural & lab-grown options",
-        "Custom sizes, cuts & assortments for retail/wholesale"
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
-        >
-          <p className="text-lg">{item}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "GIA/IGI certification",
+              "Conflict-free sourcing policies",
+              "Natural & lab-grown options",
+              "Custom sizes, cuts & assortments for retail/wholesale"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+              >
+                <p className="text-lg">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-{/* COPPER */}
-<section
-  id="copper"
-  className="relative py-20 text-white px-4 bg-gradient-to-b from-orange-900 via-orange-800 to-amber-700"
->
-  <div className="relative max-w-7xl mx-auto">
-    <div className="bg-orange-500 h-1 w-32 mb-8"></div>
-    <h2 className="text-4xl font-bold mb-6">Copper — Cathodes & Wire (99.99% Pure)</h2>
-    <p className="text-lg mb-12 max-w-3xl">
-      Export-grade copper cathodes and wire sourced from certified refineries; reliable global export with timely delivery.
-    </p>
+      {/* COPPER */}
+      <section
+        id="copper"
+        className="relative py-20 text-white px-4 bg-gradient-to-b from-orange-900 via-orange-800 to-amber-700"
+      >
+        <div className="relative max-w-7xl mx-auto">
+          <div className="bg-orange-500 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-6">Copper — Cathodes & Wire (99.99% Pure)</h2>
+          <p className="text-lg mb-12 max-w-3xl">
+            Export-grade copper cathodes and wire sourced from certified refineries; reliable global export with timely delivery.
+          </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        "99.99% pure copper (cathodes & wire)",
-        "Sourced from certified refineries",
-        "Global exports with documentation support",
-        "Suitable for electrical, industrial & manufacturing use"
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
-        >
-          <p className="text-lg">{item}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "99.99% pure copper (cathodes & wire)",
+              "Sourced from certified refineries",
+              "Global exports with documentation support",
+              "Suitable for electrical, industrial & manufacturing use"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+              >
+                <p className="text-lg">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-{/* COAL */}
-<section
-  id="coal"
-  className="relative py-20 text-white px-4 bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-800"
->
-  <div className="relative max-w-7xl mx-auto">
-    <div className="bg-gray-800 h-1 w-32 mb-8"></div>
-    <h2 className="text-4xl font-bold mb-6">Coal — Efficient Fuel Solutions</h2>
-    <p className="text-lg mb-12 max-w-3xl">
-      Sourced from reliable global suppliers with energy-grade consistency and quality assurance for industrial, power,
-      and manufacturing sectors.
-    </p>
+      {/* COAL */}
+      <section
+        id="coal"
+        className="relative py-20 text-white px-4 bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-800"
+      >
+        <div className="relative max-w-7xl mx-auto">
+          <div className="bg-gray-800 h-1 w-32 mb-8"></div>
+          <h2 className="text-4xl font-bold mb-6">Coal — Efficient Fuel Solutions</h2>
+          <p className="text-lg mb-12 max-w-3xl">
+            Sourced from reliable global suppliers with energy-grade consistency and quality assurance for industrial, power,
+            and manufacturing sectors.
+          </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        "Thermal coal supply",
-        "Quality checks & grade consistency",
-        "Support for power & industrial use",
-        "End-to-end logistics & compliance"
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
-        >
-          <p className="text-lg">{item}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "Thermal coal supply",
+              "Quality checks & grade consistency",
+              "Support for power & industrial use",
+              "End-to-end logistics & compliance"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/10 hover:bg-white/15 transition"
+              >
+                <p className="text-lg">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
 
 
@@ -384,21 +423,78 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-gray-900 text-white px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="bg-green-500 h-1 w-32 mb-8 mx-auto"></div>
-          <h2 className="text-4xl font-bold mb-4">Request a Trade Quote</h2>
-          <p className="mb-6 text-gray-300">Share your requirements and we’ll get back to you within 24 hours.</p>
-          <form className="grid gap-4 text-left">
-            <input type="text" placeholder="Company Name" className="w-full px-4 py-3 rounded text-black" />
-            <input type="text" placeholder="Product Required (e.g. Gold 24K)" className="w-full px-4 py-3 rounded text-black" />
-            <input type="number" placeholder="Quantity (in grams/carat)" className="w-full px-4 py-3 rounded text-black" />
-            <input type="email" placeholder="Your Email" className="w-full px-4 py-3 rounded text-black" />
-            <textarea placeholder="Additional Details" className="w-full px-4 py-3 rounded text-black"></textarea>
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3">Submit Inquiry</Button>
-          </form>
-        </div>
-      </section>
+<form
+  onSubmit={handleWhatsAppSubmit}
+  className="max-w-3xl mx-auto mt-12 bg-gradient-to-tr from-emerald-50 to-white p-8 rounded-2xl shadow-lg border border-gray-200 grid gap-6"
+>
+  {/* Heading */}
+  <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+    Request a Trade Quote
+  </h3>
+  <p className="text-gray-500 text-center mb-6">
+    Fill out the form and we’ll connect with you on WhatsApp within 24 hours.
+  </p>
+
+  {/* Inputs */}
+  <input
+    type="text"
+    name="company"
+    placeholder="🏢 Company Name"
+    value={formData.company}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-800"
+    required
+  />
+
+  <input
+    type="text"
+    name="product"
+    placeholder="💎 Product Required (e.g. Gold 24K)"
+    value={formData.product}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-800"
+    required
+  />
+
+  <input
+    type="number"
+    name="quantity"
+    placeholder="⚖️ Quantity (grams/carat)"
+    value={formData.quantity}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-800"
+    required
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="📧 Your Email"
+    value={formData.email}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-800"
+    required
+  />
+
+  <textarea
+    name="details"
+    placeholder="📝 Additional Details"
+    value={formData.details}
+    onChange={handleChange}
+    rows={4}
+    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-800"
+  ></textarea>
+
+  {/* Submit Button */}
+  <Button
+    type="submit"
+    className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow-md w-full text-lg font-semibold transition-transform transform hover:scale-105"
+  >
+    🚀 Submit via WhatsApp
+  </Button>
+</form>
+
+
 
 
       <section className="py-20 bg-white text-gray-900 px-4">
