@@ -1,12 +1,18 @@
-import { createRoot } from 'react-dom/client'
-// ✅ Fix
+// src/main.ssg.tsx
+import App from "./App";
+import { ViteSSG } from "vite-ssg";
 import helmetPkg from "react-helmet-async";
-const { HelmetProvider } = helmetPkg;
-import App from './App.tsx'
-import './index.css'
 
-createRoot(document.getElementById("root")!).render(
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>
-)
+const { HelmetProvider } = helmetPkg;
+
+// vite-ssg will handle SSR/SSG + hydration for you
+export const createApp = ViteSSG(
+  () => (
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  ),
+  {
+    routes: ["/"], // you only need "/" since it's an SPA
+  }
+);
